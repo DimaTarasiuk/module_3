@@ -1,9 +1,8 @@
 package com.dtarasiuk.module3.repository;
 
 import com.dtarasiuk.module3.model.Skill;
-import com.google.gson.Gson;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -13,23 +12,45 @@ import java.util.List;
 //method scrapps json data from the file and convert it to String
 public class SkillRepository {
 
-    public String readFromJsonFile() throws IOException {
-        String filePath = "C:\\Users\\dtarasiuk\\Desktop\\skills.json";
-        String jsonData = null;
-        FileInputStream fileInputStream = new FileInputStream(filePath);
-        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+    public String readFromJsonFile(){
+        String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json" ;
+        List<Skill> skills = new ArrayList<>();
+        try {
+            File input = new File(pathToTheFle);
+            JsonElement skillsElements = JsonParser.parseReader(new FileReader(input));
+            JsonObject fileObject = skillsElements.getAsJsonObject();
+            JsonArray skillsArray = fileObject.getAsJsonArray();
 
-        try (BufferedReader bf = new BufferedReader(inputStreamReader)) {
-            String line;
-            while ((line = bf.readLine()) != null) {
-                jsonData += line;
+            for(JsonElement element : skillsArray ){
+                //getting json obj
+                JsonObject skillJsonObject = element.getAsJsonObject();
+
+                //extract data
+                Long id = skillJsonObject.get("id").getAsLong();
+                String name =  skillJsonObject.get("name").getAsString();
+
+                Skill skill = new Skill(id, name);
+                skills.add(skill);
             }
-        } catch (IOException e) {
+
+            System.out.println(skills);
+
+
+        }catch (FileNotFoundException e){
             e.printStackTrace();
         }
-        if (jsonData != null)
-            jsonData.toString();
-        return jsonData;
+        return null;
+    }
+
+    public List<Skill> getAllSkillsInternal() throws IOException {
+        Gson gson = new Gson();
+        //String staticJson = "[{\"id\": 1,\"name\": \"KOTLIN\"},{\"id\":2,\"name\":\"SQL\"},{\"id\":3,\"name\":\"JAVA\"}]";
+        String json = readFromJsonFile();
+        Type targetClassType = new TypeToken<ArrayList<Skill>>() {
+        }.getType();
+        List<Skill> skills = new Gson().fromJson(json, targetClassType);
+        System.out.println(skills.size());
+        return skills;
     }
 
 
@@ -60,16 +81,7 @@ public class SkillRepository {
         return 12L;
     }
 
-    public List<Skill> getAllSkillsInternal() throws IOException {
-        Gson gson = new Gson();
-        //String staticJson = "[{\"id\": 1,\"name\": \"KOTLIN\"},{\"id\":2,\"name\":\"SQL\"},{\"id\":3,\"name\":\"JAVA\"}]";
-        String json = readFromJsonFile();
-        Type targetClassType = new TypeToken<ArrayList<Skill>>() {
-        }.getType();
-        List<Skill> skills = new Gson().fromJson(json, targetClassType);
-        System.out.println(skills.size());
-        return skills;
-    }
+
 
     private void writeSkillsToFile(List<Skill> skills) {
 

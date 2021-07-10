@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "KOTLIN"
+    },
+
+    {
+        "id":2,
+        "name":"SQLite"
+    },
+
+    {
+        "id":3,
+        "name":"JAVA" 
+    }
+]
+
