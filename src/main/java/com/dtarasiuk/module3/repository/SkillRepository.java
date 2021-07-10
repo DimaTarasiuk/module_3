@@ -12,31 +12,32 @@ import java.util.List;
 //method scrapps json data from the file and convert it to String
 public class SkillRepository {
 
-    public String readFromJsonFile(){
-        String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json" ;
+    public String readFromJsonFile() {
+        String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
         List<Skill> skills = new ArrayList<>();
         try {
             File input = new File(pathToTheFle);
             JsonElement skillsElements = JsonParser.parseReader(new FileReader(input));
-            JsonObject fileObject = skillsElements.getAsJsonObject();
-            JsonArray skillsArray = fileObject.getAsJsonArray();
+            JsonArray fileObject = skillsElements.getAsJsonArray();
 
-            for(JsonElement element : skillsArray ){
+
+            for (JsonElement element : fileObject) {
                 //getting json obj
                 JsonObject skillJsonObject = element.getAsJsonObject();
 
                 //extract data
                 Long id = skillJsonObject.get("id").getAsLong();
-                String name =  skillJsonObject.get("name").getAsString();
+                String name = skillJsonObject.get("name").getAsString();
 
                 Skill skill = new Skill(id, name);
                 skills.add(skill);
             }
 
             System.out.println(skills);
+            System.out.println(skills.size());
 
 
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return null;
@@ -81,13 +82,9 @@ public class SkillRepository {
         return 12L;
     }
 
-
-
     private void writeSkillsToFile(List<Skill> skills) {
 
     }
-
-
 }
 
 
