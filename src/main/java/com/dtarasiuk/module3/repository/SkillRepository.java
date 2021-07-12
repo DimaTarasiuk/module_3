@@ -3,7 +3,6 @@ package com.dtarasiuk.module3.repository;
 import com.dtarasiuk.module3.model.Skill;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -14,13 +13,16 @@ public class SkillRepository {
 
     public String readFromJsonFile() {
         String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
+        String skillsAsString = null;
         List<Skill> skills = new ArrayList<>();
+
         try {
             File input = new File(pathToTheFle);
             JsonElement skillsElements = JsonParser.parseReader(new FileReader(input));
             JsonArray fileObject = skillsElements.getAsJsonArray();
+            skillsAsString = fileObject.toString();
 
-
+            /*
             for (JsonElement element : fileObject) {
                 //getting json obj
                 JsonObject skillJsonObject = element.getAsJsonObject();
@@ -34,13 +36,13 @@ public class SkillRepository {
             }
 
             System.out.println(skills);
-            System.out.println(skills.size());
+            System.out.println(skills.size());*/
 
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return skillsAsString;
     }
 
     public List<Skill> getAllSkillsInternal() throws IOException {
@@ -51,6 +53,7 @@ public class SkillRepository {
         }.getType();
         List<Skill> skills = new Gson().fromJson(json, targetClassType);
         System.out.println(skills.size());
+        System.out.println(skills);
         return skills;
     }
 

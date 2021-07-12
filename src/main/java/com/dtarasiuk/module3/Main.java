@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         SkillRepository skillRepository = new SkillRepository();
         skillRepository.readFromJsonFile();
+        skillRepository.getAllSkillsInternal();
 
     }
 }
