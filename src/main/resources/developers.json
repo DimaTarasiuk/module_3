@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "firstName":"Allan",
+    "lastName":"Poe",
+    "skills": [
+      {
+       "id": 1,
+        "name": "Security"
+      },
+      {
+        "id":3,
+        "name":"Java"
+      }
+    ]
+  }
+]

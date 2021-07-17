@@ -1,5 +1,6 @@
 package com.dtarasiuk.module3;
 
+import com.dtarasiuk.module3.repository.DeveloperRepository;
 import com.dtarasiuk.module3.repository.SkillRepository;
 
 import java.io.IOException;
@@ -7,9 +8,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         SkillRepository skillRepository = new SkillRepository();
-        skillRepository.readFromJsonFile();
         skillRepository.getAllSkillsInternal();
-
+        System.out.println("get by id works "+ skillRepository.getByID(2L));
     }
 }
 

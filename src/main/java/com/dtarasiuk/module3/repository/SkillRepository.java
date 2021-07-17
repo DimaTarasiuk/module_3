@@ -1,5 +1,4 @@
 package com.dtarasiuk.module3.repository;
-
 import com.dtarasiuk.module3.model.Skill;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -8,7 +7,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-//method scrapps json data from the file and convert it to String
 public class SkillRepository {
 
     public String readFromJsonFile() {
@@ -21,7 +19,6 @@ public class SkillRepository {
             JsonElement skillsElements = JsonParser.parseReader(new FileReader(input));
             JsonArray fileObject = skillsElements.getAsJsonArray();
             skillsAsString = fileObject.toString();
-
             /*
             for (JsonElement element : fileObject) {
                 //getting json obj
@@ -38,7 +35,6 @@ public class SkillRepository {
             System.out.println(skills);
             System.out.println(skills.size());*/
 
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -47,7 +43,6 @@ public class SkillRepository {
 
     public List<Skill> getAllSkillsInternal() throws IOException {
         Gson gson = new Gson();
-        //String staticJson = "[{\"id\": 1,\"name\": \"KOTLIN\"},{\"id\":2,\"name\":\"SQL\"},{\"id\":3,\"name\":\"JAVA\"}]";
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Skill>>() {
         }.getType();
@@ -57,8 +52,7 @@ public class SkillRepository {
         return skills;
     }
 
-
-    //method returns skill by specific id
+    //method returns skill by specific id: Skills{id=2, name='SQLite'}
     public Skill getByID(Long id) throws IOException {
         return getAllSkillsInternal().stream().filter(s -> s.getId().equals(id)).findAny().orElse(null);
     }
@@ -81,7 +75,12 @@ public class SkillRepository {
 //      writeSkillsToFile(skills);
 //   }
 
-    private long generateId() {
+    private long generateId() throws IOException {
+        //get id of all skills
+        List<Skill> skills = getAllSkillsInternal();
+
+        //define max id
+        //return max id + 1
         return 12L;
     }
 

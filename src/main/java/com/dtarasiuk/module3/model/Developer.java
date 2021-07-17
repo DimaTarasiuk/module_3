@@ -3,17 +3,17 @@ package com.dtarasiuk.module3.model;
 import java.util.List;
 
 public class Developer {
-    private Long developerId;
+    private Long id;
     private String firstName;
     private String LastName;
     private List<Skill> skillList;
 
-    public Long getDeveloperId(){
-        return developerId;
+    public Long getId(){
+        return id;
     }
 
-    public void setDeveloperId(Long developerId){
-        this.developerId = developerId;
+    public void setId(Long id){
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -42,6 +42,6 @@ public class Developer {
 
     @Override
     public String toString() {
-        return "Developer{" + "firstName='" + firstName + '\'' + ", LastName='" + LastName + '\'' + ", skillList=" + skillList + '\'' + ", developerId='" + developerId + '}';
+        return "Developer{" + "firstName='" + firstName + '\'' + ", LastName='" + LastName + '\'' + ", skillList=" + skillList + '\'' + ", developerId='" + id + '}';
     }
 }
