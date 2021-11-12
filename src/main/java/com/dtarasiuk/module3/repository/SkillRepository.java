@@ -4,45 +4,30 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SkillRepository {
 
+    final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
+    //returns json data as String
     public String readFromJsonFile() {
-        String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
         String skillsAsString = null;
         List<Skill> skills = new ArrayList<>();
+        Gson gson = new Gson();
 
         try {
             File input = new File(pathToTheFle);
             JsonElement skillsElements = JsonParser.parseReader(new FileReader(input));
             JsonArray fileObject = skillsElements.getAsJsonArray();
             skillsAsString = fileObject.toString();
-            /*
-            for (JsonElement element : fileObject) {
-                //getting json obj
-                JsonObject skillJsonObject = element.getAsJsonObject();
-
-                //extract data
-                Long id = skillJsonObject.get("id").getAsLong();
-                String name = skillJsonObject.get("name").getAsString();
-
-                Skill skill = new Skill(id, name);
-                skills.add(skill);
-            }
-
-            System.out.println(skills);
-            System.out.println(skills.size());*/
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return skillsAsString;
     }
 
-    public List<Skill> getAllSkillsInternal() throws IOException {
-        Gson gson = new Gson();
+    //putting info from json into Collection
+    public List<Skill> getAllSkillsInternal() {
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Skill>>() {
         }.getType();
@@ -57,36 +42,54 @@ public class SkillRepository {
         return getAllSkillsInternal().stream().filter(s -> s.getId().equals(id)).findAny().orElse(null);
     }
 
-    public List<Skill> getAll() throws IOException {
-        return getAllSkillsInternal();
+    // removes
+    public void deleteById(Long id) {
+        List<Skill> skillList = getAllSkillsInternal();
+        skillList.remove(id);
+        writeSkillsToFile(skillList);
     }
 
-    public Skill save(Skill skill) throws IOException {
+    public List<Skill> getAll() {
+        List<Skill> skillList = new ArrayList<>();
+        for (Skill slist : skillList) {
+            skillList.add(slist);
+        }
+        return skillList;
+    }
+
+    public Skill save(Skill skill) {
         skill.setId(generateId());
         List<Skill> skills = getAllSkillsInternal();
         skills.add(skill);
-        //return writeSkillsToFile(skills);
-        return null;
+        writeSkillsToFile(skills);
+        return skill;
+
     }
 
-//   public Skill update(Skill skill){
-//      List<Skill> skills = getAllSkillsInternal();
-//      skills.stream.peek(s -> {if(s.getId().equals(skill.getId())){skill.setName(skill.getName())}});
-//      writeSkillsToFile(skills);
-//   }
-
-    private long generateId() throws IOException {
-        //get id of all skills
+    public Skill update(Skill skill) {
         List<Skill> skills = getAllSkillsInternal();
-
-        //define max id
-        //return max id + 1
-        return 12L;
+        skills.forEach(s -> {
+            if (s.getId().equals(skill.getId())) {
+                s.setName(skill.getName());
+            }
+        });
+        writeSkillsToFile(skills);
+        return skill;
     }
 
-    private void writeSkillsToFile(List<Skill> skills) {
+    private Long generateId() {
+        List<Skill> skills = getAllSkillsInternal();
+        Long id = skills.stream().mapToLong(Skill::getId).max().orElse(-1);
+        return id+1;
+    }
+
+    public void writeSkillsToFile(List<Skill> skills) {
+        //todo check why stack trace writes to the file
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(pathToTheFle))){
+            oos.writeObject(skills);
+        }  catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }
-
-

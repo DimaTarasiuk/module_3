@@ -1,12 +1,12 @@
 package com.dtarasiuk.module3.model;
 
-public class Skill {
+import java.io.Serializable;
+
+public class Skill implements Serializable {
     private Long id;
     private String name;
 
-    public Skill(Long id, String name){
-        this.id = id;
-        this.name = name;
+    public Skill(){
     }
 
     public Long getId() {

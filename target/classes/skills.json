@@ -1,21 +1,1 @@
-[
-    {
-        "id": 1,
-        "name": "Security"
-    },
-
-    {
-        "id":2,
-        "name":"SQLite"
-    },
-
-    {
-        "id":3,
-        "name":"Java"
-    },
-    {
-        "id":4,
-        "name":"Hystryx"
-    }
-]
-
+[    {        "id":1,        "name": "Security"    },    {        "id":2,        "name":"SQLite"    },    {        "id":3,        "name":"Java"    },    {        "id":4,        "name":"Hystryx"    }]
