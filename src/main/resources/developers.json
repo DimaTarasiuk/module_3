@@ -1,12 +1,27 @@
 [
   {
-    "id": 1,
+    "id":1,
     "firstName":"Allan",
-    "lastName":"Poe",
-    "skills": [
+    "lastName":"Poes",
+    "skills":[
       {
-       "id": 1,
-        "name": "Security"
+        "id":1,
+        "name":"Security"
+      },
+      {
+        "id":3,
+        "name":"Java"
+      }
+    ]
+  },
+  {
+    "id":2,
+    "firstName":"Kody",
+    "lastName":"Maguier",
+    "skills":[
+      {
+        "id":1,
+        "name":"Security"
       },
       {
         "id":3,
