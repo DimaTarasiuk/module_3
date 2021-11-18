@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "conda"
+  },
+  [
+    {
+      "id": 1,
+      "firstName": "Kody",
+      "lastName": "Maguier"
+    },
+    [
+      {
+        "id": 1,
+        "name": "JAVA"
+      },
+      {
+        "id": 2,
+        "name": "PHP"
+      },
+      {
+        "id": 3,
+        "name": "SQL"
+      }
+    ]
+  ]
+]

@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class DeveloperRepository {
-    final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\developers.json";
+    final String pathToTheFle = "C:\\Users\\mrtar\\IdeaProjects\\module_3\\src\\test\\resources\\developers.json";
 
     public String readFromJsonFile() {
         String developersAsString = null;

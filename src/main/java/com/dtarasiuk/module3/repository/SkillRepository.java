@@ -8,7 +8,7 @@ import java.util.*;
 
 public class SkillRepository {
 
-    final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
+    final String pathToTheFle = "C:\\Users\\mrtar\\IdeaProjects\\module_3\\src\\test\\resources\\skills.json";
     //returns json data as String
     public String readFromJsonFile() {
         String skillsAsString = null;

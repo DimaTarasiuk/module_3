@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeamRepository {
-    final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\teams.json";
+    final String pathToTheFle = "C:\\Users\\mrtar\\IdeaProjects\\module_3\\src\\test\\resources\\teams.json";
 
     public String readFromJsonFile(){
         String teamsAsString = null;
