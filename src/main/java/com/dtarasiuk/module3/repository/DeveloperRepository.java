@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,13 +32,12 @@ public class DeveloperRepository {
         return developersAsString;
 }
 
-    public List<Developer> getAllDevelopersInternal() {
+    private List<Developer> getAllDevelopersInternal() {
         Gson gson = new Gson();
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Developer>>() {
         }.getType();
         List<Developer> developers = new Gson().fromJson(json, targetClassType);
-
         return new Gson().fromJson(json, targetClassType); //todo check why in this step has null last name and skill list
     }
     public Long generateId() {
@@ -54,9 +54,10 @@ public class DeveloperRepository {
         return developer;
     }
     public void writeDevelopersToFile(List<Developer> developers){
+        String newJsonDevelopers = new Gson().toJson(developers);
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(pathToTheFle));
-            oos.writeObject(developers);
+            FileOutputStream fos = new FileOutputStream(pathToTheFle);
+            fos.write(newJsonDevelopers.getBytes());
         }catch (Exception e){
             e.printStackTrace();
         }
