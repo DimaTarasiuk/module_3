@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class SkillRepository {
@@ -27,7 +28,7 @@ public class SkillRepository {
     }
 
     //putting info from json into Collection
-    public List<Skill> getAllSkillsInternal() {
+    private List<Skill> getAllSkillsInternal() {
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Skill>>() {
         }.getType();
@@ -83,10 +84,11 @@ public class SkillRepository {
         return id+1;
     }
 
-    public void writeSkillsToFile(List<Skill> skills) {
-        //todo check why stack trace writes to the file
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(pathToTheFle))){
-            oos.writeObject(skills);
+    private void writeSkillsToFile(List<Skill> skills) {
+
+        String newSkills = new Gson().toJson(skills);
+        try (FileOutputStream oos = new FileOutputStream(pathToTheFle)){
+            oos.write(newSkills.getBytes());
         }  catch (Exception e){
             e.printStackTrace();
         }

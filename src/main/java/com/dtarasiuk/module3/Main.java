@@ -17,9 +17,12 @@ public class Main {
         System.out.println("developers is " + dr.readFromJsonFile());
         System.out.println("team is " + tr.readFromJsonFile());
         System.out.println("======================");
-        dr.getAllDevelopersInternal();
         System.out.println("generated id expected 3 - " + dr.generateId());
-        sr.getAllSkillsInternal();
+        Skill skill = new Skill();
+        skill.setName("Peta");
+        sr.save(skill);
+
+
     }
 }
 

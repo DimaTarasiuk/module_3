@@ -8,8 +8,10 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +84,13 @@ public class TeamRepository {
     }
 
     public void writeTeamsToFile(List<Team> teams){
-        //todo write team to file
+        String newJsonTeams = new Gson().toJson(teams);
+        try {
+            FileOutputStream fos = new FileOutputStream(pathToTheFle);
+            fos.write(newJsonTeams.getBytes());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
