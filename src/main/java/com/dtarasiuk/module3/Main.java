@@ -18,7 +18,7 @@ public class Main {
         System.out.println("team is " + tr.readFromJsonFile());
         System.out.println("======================");
         dr.getAllDevelopersInternal();
-        System.out.println("generated id expected 4 - " + dr.generateId());
+        System.out.println("generated id expected 3 - " + dr.generateId());
         sr.getAllSkillsInternal();
     }
 }

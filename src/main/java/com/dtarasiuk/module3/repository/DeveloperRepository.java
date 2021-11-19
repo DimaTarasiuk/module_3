@@ -37,9 +37,8 @@ public class DeveloperRepository {
         Type targetClassType = new TypeToken<ArrayList<Developer>>() {
         }.getType();
         List<Developer> developers = new Gson().fromJson(json, targetClassType);
-        System.out.println(developers.size());
-        System.out.println(developers);
-        return developers; //todo check why in this step has null last name and skill list
+
+        return new Gson().fromJson(json, targetClassType); //todo check why in this step has null last name and skill list
     }
     public Long generateId() {
         List<Developer> developers = getAllDevelopersInternal();
