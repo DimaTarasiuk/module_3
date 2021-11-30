@@ -9,7 +9,7 @@ import java.util.*;
 
 public class SkillRepository {
 
-    final String pathToTheFle = "C:\\Users\\mrtar\\IdeaProjects\\module_3\\src\\test\\resources\\skills.json";
+    final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
     //returns json data as String
     public String readFromJsonFile() {
         String skillsAsString = null;
@@ -32,10 +32,7 @@ public class SkillRepository {
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Skill>>() {
         }.getType();
-        List<Skill> skills = new Gson().fromJson(json, targetClassType);
-        System.out.println(skills.size());
-        System.out.println(skills);
-        return skills;
+        return new Gson().fromJson(json, targetClassType);
     }
 
     //method returns skill by specific id: Skills{id=2, name='SQLite'}
@@ -45,17 +42,14 @@ public class SkillRepository {
 
     // removes
     public void deleteById(Long id) {
-        List<Skill> skillList = getAllSkillsInternal();
-        skillList.remove(id);
+        List<Skill> skillList = new ArrayList<>();
+        skillList = getAllSkillsInternal();
+        skillList.removeIf(s -> s.getId().equals(id));
         writeSkillsToFile(skillList);
     }
 
     public List<Skill> getAll() {
-        List<Skill> skillList = new ArrayList<>();
-        for (Skill slist : skillList) {
-            skillList.add(slist);
-        }
-        return skillList;
+        return getAllSkillsInternal();
     }
 
     public Skill save(Skill skill) {
@@ -64,7 +58,6 @@ public class SkillRepository {
         skills.add(skill);
         writeSkillsToFile(skills);
         return skill;
-
     }
 
     public Skill update(Skill skill) {

@@ -16,7 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class DeveloperRepository {
-    final String pathToTheFle = "C:\\Users\\mrtar\\IdeaProjects\\module_3\\src\\test\\resources\\developers.json";
+    final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\developers.json";
 
     public String readFromJsonFile() {
         String developersAsString = null;
@@ -38,12 +38,17 @@ public class DeveloperRepository {
         Type targetClassType = new TypeToken<ArrayList<Developer>>() {
         }.getType();
         List<Developer> developers = new Gson().fromJson(json, targetClassType);
-        return new Gson().fromJson(json, targetClassType); //todo check why in this step has null last name and skill list
+        return new Gson().fromJson(json, targetClassType);
     }
     public Long generateId() {
         List<Developer> developers = getAllDevelopersInternal();
         Long id = developers.stream().mapToLong(Developer::getId).max().orElse(-1);
         return id+1;
+    }
+    public void deleteById(Long id){
+        List<Developer> developers = getAllDevelopersInternal();
+        developers.removeIf(d->d.getId().equals(id));
+        writeDevelopersToFile(developers);
     }
 
     public Developer save(Developer developer) {

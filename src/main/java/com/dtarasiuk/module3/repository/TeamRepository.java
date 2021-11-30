@@ -51,12 +51,12 @@ public class TeamRepository {
 
     public void deleteById(Long id){
         List<Team> teamList = getAllTeamsInternal();
-        teamList.remove(id);
+        teamList.removeIf(t -> t.getId().equals(id));
         writeTeamsToFile(teamList);
     }
 
     public List<Team> getAll(){
-        List<Team> teamList = new ArrayList<>();
+        List<Team> teamList = getAllTeamsInternal();
         for(Team tList : teamList){
             teamList.add(tList);
         }
