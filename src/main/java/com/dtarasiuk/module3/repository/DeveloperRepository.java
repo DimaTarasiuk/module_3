@@ -18,7 +18,7 @@ import java.util.List;
 public class DeveloperRepository {
     final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\developers.json";
 
-    public String readFromJsonFile() {
+    private String readFromJsonFile() {
         String developersAsString = null;
         List<Developer> developers = new ArrayList<>();
         try {
@@ -30,17 +30,25 @@ public class DeveloperRepository {
             e.printStackTrace();
         }
         return developersAsString;
-}
+}private void writeDevelopersToFile(List<Developer> developers){
+        String newJsonDevelopers = new Gson().toJson(developers);
+        try {
+            FileOutputStream fos = new FileOutputStream(pathToTheFle);
+            fos.write(newJsonDevelopers.getBytes());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     private List<Developer> getAllDevelopersInternal() {
-        Gson gson = new Gson();
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Developer>>() {
         }.getType();
         List<Developer> developers = new Gson().fromJson(json, targetClassType);
         return new Gson().fromJson(json, targetClassType);
     }
-    public Long generateId() {
+    private Long generateId() {
         List<Developer> developers = getAllDevelopersInternal();
         Long id = developers.stream().mapToLong(Developer::getId).max().orElse(-1);
         return id+1;
@@ -58,14 +66,5 @@ public class DeveloperRepository {
         writeDevelopersToFile(developersList);
         return developer;
     }
-    public void writeDevelopersToFile(List<Developer> developers){
-        String newJsonDevelopers = new Gson().toJson(developers);
-        try {
-            FileOutputStream fos = new FileOutputStream(pathToTheFle);
-            fos.write(newJsonDevelopers.getBytes());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
-    }
 }

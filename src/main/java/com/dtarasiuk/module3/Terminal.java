@@ -1,7 +1,9 @@
 package com.dtarasiuk.module3;
 
 import com.dtarasiuk.module3.model.Skill;
+import com.dtarasiuk.module3.repository.DeveloperRepository;
 import com.dtarasiuk.module3.repository.SkillRepository;
+import com.dtarasiuk.module3.repository.TeamRepository;
 
 import java.util.Scanner;
 
@@ -34,7 +36,7 @@ public class Terminal {
                     rmSkill.deleteById(rmId.nextLong());
                     System.out.println("skill removed");
                     break;
-                case "get all":
+                case "get all skills":
                     SkillRepository getAll = new SkillRepository();
                     System.out.println("------all required skills-----");
                     getAll.getAll();
@@ -51,7 +53,39 @@ public class Terminal {
                     editSkill.update(editS);
                     break;
                 //-----Teams-----
+                case "create team":
+                    System.out.println("");
+                    //todo create team logic
+                    break;
+                case "get all teams":
+                    TeamRepository getAllTeams = new TeamRepository();
+                    System.out.println("-----All team requested-----");
+                    getAllTeams.getAll();
+                    break;
+                case "rm team":
+                    //todo remove team
+                    break;
+                case "update team":
+                    // todo update
+                    break;
+
                 //-----Developers-----
+
+                case "create dev":
+                    //todo create developer
+                    break;
+                case "get all devs":
+                    DeveloperRepository getallDevs = new DeveloperRepository();
+                    System.out.println("-----All team requested-----");
+                    //todo create getall method in Dev Repo
+                    break;
+                case "rm dev":
+                    //todo remove developer
+                    break;
+                case "update dev":
+                    // todo update developer
+                    break;
+
                 case "exit":
                     start=false;
                     break;
