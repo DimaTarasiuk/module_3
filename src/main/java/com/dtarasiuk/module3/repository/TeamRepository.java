@@ -74,13 +74,12 @@ public class TeamRepository {
         return team;
     }
 
-    public void save(Team team){
+    public Team save(Team team){
         team.setId(generateId());
         List<Team> teams = getAllTeamsInternal();
         teams.add(team);
         writeTeamsToFile(teams);
-
-
+        return team;
     }
 
     public void writeTeamsToFile(List<Team> teams){
