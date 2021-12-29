@@ -1,6 +1,7 @@
 package com.dtarasiuk.module3;
 
 import com.dtarasiuk.module3.model.Skill;
+import com.dtarasiuk.module3.model.Team;
 import com.dtarasiuk.module3.repository.DeveloperRepository;
 import com.dtarasiuk.module3.repository.SkillRepository;
 import com.dtarasiuk.module3.repository.TeamRepository;
@@ -53,9 +54,13 @@ public class Terminal {
                     editSkill.update(editS);
                     break;
                 //-----Teams-----
-                case "create team":
-                    System.out.println("");
-                    //todo create team logic
+                case "add team":
+                    System.out.println("Enter the name of new team ->");
+                    Team team = new Team();
+                    TeamRepository newTeam = new TeamRepository();
+                    Scanner userInputTeam = new Scanner(System.in);
+                    team.setName(userInputTeam.nextLine());
+                    newTeam.save(team);
                     break;
                 case "get all teams":
                     TeamRepository getAllTeams = new TeamRepository();
@@ -63,7 +68,7 @@ public class Terminal {
                     getAllTeams.getAll();
                     break;
                 case "rm team":
-                    //todo remove team
+                    //todo
                     break;
                 case "update team":
                     // todo update
