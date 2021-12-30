@@ -42,8 +42,8 @@ public class Terminal {
                     System.out.println("------all required skills-----");
                     getAll.getAll();
                     break;
-                case "edit skill":
-                    System.out.print("edit skill");
+                case "update skill":
+                    System.out.print("updating skill...");
                     SkillRepository editSkill = new SkillRepository();
                     Skill editS = new Skill();
                     Scanner editScan = new Scanner(System.in);
@@ -68,10 +68,22 @@ public class Terminal {
                     getAllTeams.getAll();
                     break;
                 case "rm team":
-                    //todo
+                    TeamRepository rmTeam = new TeamRepository();
+                    System.out.println("Enter team ID need to be removed ->");
+                    Scanner rmTeamID = new Scanner(System.in);
+                    rmTeam.deleteById(rmTeamID.nextLong());
+                    System.out.println("Team with your ID removed");
                     break;
                 case "update team":
-                    // todo update
+                    System.out.print("updating skill...");
+                    TeamRepository editTeam = new TeamRepository();
+                    Team editT = new Team();
+                    Scanner editTeamScan = new Scanner(System.in);
+                    System.out.println("Enter id of skill need to be updated");
+                    editT.setId(editTeamScan.nextLong());
+                    System.out.println("enter new Skill name");
+                    editT.setName(editTeamScan.nextLine());
+                    editTeam.update(editT);
                     break;
 
                 //-----Developers-----
