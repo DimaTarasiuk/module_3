@@ -103,9 +103,9 @@ public class Terminal {
                     System.out.println("----new developer added----");
                     break;
                 case "get all devs":
-                    DeveloperRepository getallDevs = new DeveloperRepository();
-                    System.out.println("-----All team requested-----");
-                    //todo create getall method in Dev Repo
+                    DeveloperRepository getAllDevs = new DeveloperRepository();
+                    System.out.println("-----All developers requested-----");
+                    getAllDevs.getAll();
                     break;
                 case "rm dev":
                     //todo remove developer
