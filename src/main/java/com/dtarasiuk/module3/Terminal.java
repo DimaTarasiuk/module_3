@@ -1,5 +1,6 @@
 package com.dtarasiuk.module3;
 
+import com.dtarasiuk.module3.model.Developer;
 import com.dtarasiuk.module3.model.Skill;
 import com.dtarasiuk.module3.model.Team;
 import com.dtarasiuk.module3.repository.DeveloperRepository;
@@ -88,8 +89,18 @@ public class Terminal {
 
                 //-----Developers-----
 
-                case "create dev":
-                    //todo create developer
+                case "add dev":
+                    System.out.print("Enter new skill -> ");
+                    Developer developer = new Developer();
+                    DeveloperRepository addDev = new DeveloperRepository();
+                    Scanner addDevScan = new Scanner(System.in);
+                    System.out.println("Enter developer name -> ");
+                    developer.setFirstName(addDevScan.nextLine());
+                    System.out.println("Enter developer last name -> ");
+                    developer.setLastName(addDevScan.nextLine());
+                    System.out.println("Add developer skill -> ");
+                    addDev.save(developer);
+                    System.out.println("----new developer added----");
                     break;
                 case "get all devs":
                     DeveloperRepository getallDevs = new DeveloperRepository();
