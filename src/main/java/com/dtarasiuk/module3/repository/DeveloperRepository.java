@@ -1,6 +1,7 @@
 package com.dtarasiuk.module3.repository;
 import com.dtarasiuk.module3.model.Developer;
 import com.dtarasiuk.module3.model.Skill;
+import com.dtarasiuk.module3.model.Team;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -67,4 +68,11 @@ public class DeveloperRepository {
         return developer;
     }
 
-}
+    public List<Developer> getAll(){
+            List<Developer> devList = getAllDevelopersInternal();
+            for(Developer dList : devList){
+                devList.add(dList);
+            }
+            return devList;
+        }
+    }
