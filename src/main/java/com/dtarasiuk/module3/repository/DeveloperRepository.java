@@ -75,4 +75,19 @@ public class DeveloperRepository {
             }
             return devList;
         }
+     public Developer update(Developer developer){
+        List<Developer> developerList = getAllDevelopersInternal();
+        developerList.forEach(s -> {
+            if(s.getId().equals(developer.getId())){
+                s.setFirstName(developer.getFirstName());
+                s.setLastName(developer.getLastName());
+            }
+        });
+        writeDevelopersToFile(developerList);
+        return developer;
+     }
+
     }
+
+
+
