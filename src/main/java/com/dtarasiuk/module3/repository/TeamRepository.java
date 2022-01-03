@@ -39,7 +39,6 @@ public class TeamRepository {
         Type targetClassType = new TypeToken<ArrayList<Team>>(){}.getType();//???
         List<Team> teams = new Gson().fromJson(json,targetClassType);
         System.out.println("teams size" + teams.size());
-        System.out.println(teams);
         return teams;
     }
 
