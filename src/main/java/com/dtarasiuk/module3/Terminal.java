@@ -108,10 +108,25 @@ public class Terminal {
                     getAllDevs.getAll();
                     break;
                 case "rm dev":
-                    //todo remove developer
+                    System.out.println("Removing developer by ID....");
+                    System.out.println("Enter ID need to be removed");
+                    Scanner rmDevScan = new Scanner(System.in);//id
+                    DeveloperRepository rmDev = new DeveloperRepository();
+                    rmDev.deleteById(rmDevScan.nextLong());
+                    System.out.println("Developer removed");
                     break;
                 case "update dev":
-                    // todo update developer
+                    System.out.print("updating developer...");
+                    DeveloperRepository editDev = new DeveloperRepository();
+                    Developer editD = new Developer();
+                    Scanner editDevScan = new Scanner(System.in);
+                    System.out.println("Enter id of Developer need to be updated ->");
+                    editD.setId(editDevScan.nextLong());
+                    System.out.println("enter new Developer name ->");
+                    editD.setFirstName(editDevScan.nextLine());
+                    System.out.println("enter new Developer last name ->");
+                    editD.setLastName(editDevScan.nextLine());
+                    editDev.update(editD);
                     break;
 
                 case "exit":
