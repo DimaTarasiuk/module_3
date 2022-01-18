@@ -1,3 +1,5 @@
 *.class
 /.idea
 /src/main/java/com/dtarasiuk/module3/tmp/
+/target
+/src/main/java/com/dtarasiuk/module3/repository/tmpRepo

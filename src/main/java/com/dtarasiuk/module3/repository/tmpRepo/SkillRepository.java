@@ -1,4 +1,4 @@
-package com.dtarasiuk.module3.repository;
+package com.dtarasiuk.module3.repository.tmpRepo;
 import com.dtarasiuk.module3.model.Skill;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -10,7 +10,7 @@ import java.util.*;
 public class SkillRepository {
 
     final String pathToTheFle = "C:\\Users\\dtarasiuk\\IdeaProjects\\module_3\\src\\main\\resources\\skills.json";
-    //returns json data as String
+
     public String readFromJsonFile() {
         String skillsAsString = null;
         List<Skill> skills = new ArrayList<>();

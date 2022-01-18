@@ -3,9 +3,9 @@ package com.dtarasiuk.module3;
 import com.dtarasiuk.module3.model.Developer;
 import com.dtarasiuk.module3.model.Skill;
 import com.dtarasiuk.module3.model.Team;
-import com.dtarasiuk.module3.repository.DeveloperRepository;
-import com.dtarasiuk.module3.repository.SkillRepository;
-import com.dtarasiuk.module3.repository.TeamRepository;
+import com.dtarasiuk.module3.repository.tmpRepo.DeveloperRepository;
+import com.dtarasiuk.module3.repository.tmpRepo.SkillRepository;
+import com.dtarasiuk.module3.repository.tmpRepo.TeamRepository;
 
 import java.util.Scanner;
 
