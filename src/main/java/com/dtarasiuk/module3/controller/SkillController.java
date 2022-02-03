@@ -9,15 +9,19 @@ import java.util.List;
 public class SkillController {
     private final ISkillRepository skillRepository = new GsonSkillRepositoryImpl();
 
-    public Skill createSkill(String name){
+    public Skill createSkill(Long id, String name){
         Skill skill = new Skill();
+        skill.setId(id);
         skill.setName(name);
         return skillRepository.save(skill);
     }
 
-    public Skill updateSkill(Long id){
+    public Skill updateSkill(Long id, String name){
         Skill skill = new Skill();
+        skill.setId(id);
+        skill.setName(name);
         skillRepository.update(skill);
         return skillRepository.save(skill);
     }
+
 }

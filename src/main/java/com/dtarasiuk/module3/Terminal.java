@@ -1,5 +1,6 @@
 package com.dtarasiuk.module3;
 
+import com.dtarasiuk.module3.controller.DeveloperController;
 import com.dtarasiuk.module3.model.Developer;
 import com.dtarasiuk.module3.model.Skill;
 import com.dtarasiuk.module3.model.Team;
@@ -117,16 +118,16 @@ public class Terminal {
                     break;
                 case "update dev":
                     System.out.print("updating developer...");
-                    DeveloperRepository editDev = new DeveloperRepository();
-                    Developer editD = new Developer();
+                    DeveloperController developerController = new  DeveloperController();
+
+
                     Scanner editDevScan = new Scanner(System.in);
                     System.out.println("Enter id of Developer need to be updated ->");
-                    editD.setId(editDevScan.nextLong());
+                    Long id = editDevScan.nextLong();
                     System.out.println("enter new Developer name ->");
-                    editD.setFirstName(editDevScan.nextLine());
+                    String name = editDevScan.nextLine();
                     System.out.println("enter new Developer last name ->");
-                    editD.setLastName(editDevScan.nextLine());
-                    editDev.update(editD);
+                    developerController.updateDeveloper(id, name, null, null);
                     break;
 
                 case "exit":

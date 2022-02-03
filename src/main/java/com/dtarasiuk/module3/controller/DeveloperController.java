@@ -17,4 +17,48 @@ public class DeveloperController {
         developer.setSkillList(skills);
         return developerRepository.save(developer);
     }
+    public Developer updateDeveloper(Long id,String firstName, String lastName, List<Skill> skills){
+        Developer developer = new Developer();
+        developer.setId(id);
+        developer.setFirstName(firstName);
+        developer.setLastName(lastName);
+        developer.setSkillList(skills);
+        developerRepository.update(developer);
+        return developer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
 }

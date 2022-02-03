@@ -1,1 +1,38 @@
-[{"id":1,"name":"MARK 2","developers":[{"id":1,"firstName":"Allan"},{"id":1,"firstName":"Allan"}]},{"id":2,"name":"Tmp"}]
+[
+  {
+    "id":1,
+    "name":"MARK 2",
+    "developers":[
+      {
+        "id":1,
+        "firstName":"Allan",
+        "lastName":"Poes",
+        "skills":[
+          {
+            "id":1,
+            "name":"Security"
+          },
+          {
+            "id":3,
+            "name":"Java"
+          }
+        ]
+      },
+      {
+        "id":1,
+        "firstName":"Allan",
+        "lastName":"Poes",
+        "skills":[
+          {
+            "id":1,
+            "name":"Security"
+          },
+          {
+            "id":3,
+            "name":"Java"
+          }
+        ]
+      }
+    ]
+  }
+]

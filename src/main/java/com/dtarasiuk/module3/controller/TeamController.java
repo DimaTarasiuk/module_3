@@ -21,5 +21,13 @@ public class TeamController {
         return teamRepository.save(team);
     }
 
+    public Team updateTeam(Long id, String name, List<Developer> developers, TeamStatus status){
+        Team team = new Team();
+        team.setId(id);
+        team.setName(name);
+        team.setDevelopers(developers);
+        team.setStatus(status);
+        return teamRepository.update(team);
+    }
 
 }
