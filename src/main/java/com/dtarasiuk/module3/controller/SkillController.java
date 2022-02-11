@@ -24,4 +24,8 @@ public class SkillController {
         return skillRepository.save(skill);
     }
 
+    public void deleteSkill(Long id){
+        skillRepository.deleteById(id);
+    }
+
 }
