@@ -30,4 +30,8 @@ public class TeamController {
         return teamRepository.update(team);
     }
 
+    public void deleteTeam (Long id){
+        teamRepository.deleteById(id);
+    }
+
 }
