@@ -25,40 +25,9 @@ public class DeveloperController {
         developer.setSkillList(skills);
         developerRepository.update(developer);
         return developer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
-
+    public void removeDeveloper(Long id){
+        developerRepository.deleteById(id);
+    }
 }

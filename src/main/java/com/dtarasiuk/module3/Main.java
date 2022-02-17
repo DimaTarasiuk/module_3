@@ -1,8 +1,10 @@
 package com.dtarasiuk.module3;
 
+import com.dtarasiuk.module3.view.SkillView;
+
 public class Main {
     public static void main(String[] args) {
-        Terminal terminal = new Terminal();
-        terminal.run();
+        SkillView skillView = new SkillView();
+        skillView.runView();
     }
 }

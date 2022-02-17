@@ -1,5 +1,6 @@
 package com.dtarasiuk.module3.controller;
 
+import com.dtarasiuk.module3.model.Developer;
 import com.dtarasiuk.module3.model.Skill;
 import com.dtarasiuk.module3.repository.ISkillRepository;
 import com.dtarasiuk.module3.repository.gson.GsonSkillRepositoryImpl;
