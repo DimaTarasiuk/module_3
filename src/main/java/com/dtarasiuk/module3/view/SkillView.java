@@ -14,7 +14,7 @@ public class SkillView {
     public void runView(){
         while (isRun){
             System.out.println("App started:");
-            System.out.println("Enter command: ");
+            System.out.println("Enter command:");
             Scanner com = new Scanner(System.in);
             String command = com.nextLine();
             switch (command){
@@ -31,13 +31,30 @@ public class SkillView {
                     scanner = new Scanner(System.in);
                     skillRepository.deleteById(scanner.nextLong());
                     System.out.println("skill with id " + scanner + "removed");
+                    break;
+                case "upd skill":
+                    System.out.print("updating skill...");
+                    Scanner editScan = new Scanner(System.in);
+                    Skill editskill = new Skill();
+                    System.out.println("Enter ID of skill that should be updated");
+                    editskill.setId(editScan.nextLong());
+                    System.out.println("enter new Skill name");
+                    editScan = new Scanner(System.in);
+                    editskill.setName(editScan.nextLine());
+                    skillRepository.update(editskill);
+                    System.out.println("Skill with id:" + editskill.getId() + " has been updated");
+                    break;
+                case "get all skills":
+                    System.out.println(skillRepository.getAll());
+                    System.out.println(" ");
+                    break;
+                default:
+                    System.out.println("no such command use CRUD operations");
             }
             System.out.println("Do you wanna continue? Y/N");
             Scanner scanner = new Scanner(System.in);
             String answer = scanner.nextLine();
-            if (answer == "y")
-                isRun = true;
-            else isRun = false;
+            isRun = answer.equals("y");
         }
     }
 
