@@ -13,8 +13,7 @@ public class SkillView {
 
     public void runView(){
         while (isRun){
-            System.out.println("App started:");
-            System.out.println("Enter command:");
+
             Scanner com = new Scanner(System.in);
             String command = com.nextLine();
             switch (command){
