@@ -1,5 +1,6 @@
 package com.dtarasiuk.module3;
 
+import com.dtarasiuk.module3.view.DeveloperView;
 import com.dtarasiuk.module3.view.SkillView;
 
 public class Main {
@@ -9,5 +10,8 @@ public class Main {
 
         SkillView skillView = new SkillView();
         skillView.runView();
+
+        //DeveloperView developerView = new DeveloperView();
+        //developerView.runView();
     }
 }
