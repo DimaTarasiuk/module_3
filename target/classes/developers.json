@@ -9,7 +9,7 @@
         "name":"Security"
       },
       {
-        "id":3,
+        "id":2,
         "name":"Java"
       }
     ]
@@ -25,7 +25,7 @@
       },
       {
         "id":3,
-        "name":"Java"
+        "name":"SQL"
       }
     ]
   }

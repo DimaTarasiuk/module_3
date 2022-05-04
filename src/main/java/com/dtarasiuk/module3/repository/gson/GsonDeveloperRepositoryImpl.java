@@ -30,6 +30,7 @@ public class GsonDeveloperRepositoryImpl implements IDeveloperRepository {
             e.printStackTrace();
         }
         return developersAsString;
+
     }private void writeDevelopersToFile(List<Developer> developers){
         String newJsonDevelopers = new Gson().toJson(developers);
         try {

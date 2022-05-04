@@ -8,10 +8,10 @@ public class Main {
         System.out.println("App started:");
         System.out.println("Enter command:");
 
-        SkillView skillView = new SkillView();
-        skillView.runView();
+//        SkillView skillView = new SkillView();
+//        skillView.runView();
 
-        //DeveloperView developerView = new DeveloperView();
-        //developerView.runView();
+        DeveloperView developerView = new DeveloperView();
+        developerView.runView();
     }
 }

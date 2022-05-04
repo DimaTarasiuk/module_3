@@ -24,6 +24,7 @@ public class DeveloperView {
                     System.out.println("enter developer's first name: ");
                     Scanner sn = new Scanner(System.in);
                     String name = sn.nextLine();
+                    System.out.println("enter developer's last name: ");
                     String surname = sn.nextLine();
                     developerController.createDeveloper(name,surname,null);
                     System.out.println("----new developer added----");

@@ -1,19 +1,14 @@
 package com.dtarasiuk.module3.repository.tmpRepo;
+
 import com.dtarasiuk.module3.model.Developer;
-import com.dtarasiuk.module3.model.Skill;
-import com.dtarasiuk.module3.model.Team;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.*;
 import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class DeveloperRepository {
@@ -21,7 +16,6 @@ public class DeveloperRepository {
 
     private String readFromJsonFile() {
         String developersAsString = null;
-        List<Developer> developers = new ArrayList<>();
         try {
             File input = new File(pathToTheFle);
             JsonElement devElements = JsonParser.parseReader(new FileReader(input));
@@ -46,12 +40,11 @@ public class DeveloperRepository {
         String json = readFromJsonFile();
         Type targetClassType = new TypeToken<ArrayList<Developer>>() {
         }.getType();
-        List<Developer> developers = new Gson().fromJson(json, targetClassType);
         return new Gson().fromJson(json, targetClassType);
     }
     private Long generateId() {
         List<Developer> developers = getAllDevelopersInternal();
-        Long id = developers.stream().mapToLong(Developer::getId).max().orElse(-1);
+        long id = developers.stream().mapToLong(Developer::getId).max().orElse(-1);
         return id+1;
     }
     public void deleteById(Long id){
