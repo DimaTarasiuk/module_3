@@ -1,21 +1,29 @@
 package com.dtarasiuk.module3.view;
 
 import com.dtarasiuk.module3.controller.DeveloperController;
+import com.dtarasiuk.module3.controller.SkillController;
 import com.dtarasiuk.module3.model.Developer;
 import com.dtarasiuk.module3.model.Skill;
 import com.dtarasiuk.module3.repository.IDeveloperRepository;
+import com.dtarasiuk.module3.repository.ISkillRepository;
 import com.dtarasiuk.module3.repository.gson.GsonDeveloperRepositoryImpl;
+import com.dtarasiuk.module3.repository.gson.GsonSkillRepositoryImpl;
+import com.dtarasiuk.module3.repository.tmpRepo.SkillRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class DeveloperView {
     private boolean isRun = true;
     private final IDeveloperRepository developerRepository = new GsonDeveloperRepositoryImpl();
+    private final ISkillRepository skillRepository = new GsonSkillRepositoryImpl();
 
     public void runView(){
         while (isRun){
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
+            List<Skill> skills = null;
 
             switch (command){
                 case "add dev":
@@ -26,7 +34,13 @@ public class DeveloperView {
                     String name = sn.nextLine();
                     System.out.println("enter developer's last name: ");
                     String surname = sn.nextLine();
-                    developerController.createDeveloper(name,surname,null);
+                    //adding skills to new dev
+                    System.out.println("Enter skill name of developer");
+                    Skill skill = new Skill();
+                    skill.setName(sn.nextLine());
+                    skillRepository.save(skill);
+                    skills.add(skill); // null pointer  
+                    developerController.createDeveloper(name,surname,skills);//add list
                     System.out.println("----new developer added----");
                     break;
                 case "rm dev":
